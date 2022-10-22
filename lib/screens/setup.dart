@@ -60,8 +60,11 @@ class _SetupWidgetState extends State<SetupScreen> {
       ),
       floatingActionButton: ElevatedButton(
         onPressed: () {
-          for (var controller in _textEditingControllersList) {
-            debugPrint(controller.text);
+          if (_formKey.currentState.validate()) {
+            Navigator.pushNamed(context, '/wheel');
+            for (var controller in _textEditingControllersList) {
+              debugPrint(controller.text);
+            }
           }
         },
         child: const Text('Done'),

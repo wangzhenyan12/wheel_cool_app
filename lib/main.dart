@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wheely_cool_app/screens/setup.dart';
+import 'package:wheely_cool_app/screens/wheel.dart';
 import 'common/theme.dart';
 
 void main() {
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/setup',
       routes: {
         '/setup': (context) => SetupScreen(),
+        '/wheel': (context) => WheelScreen(),
       },
     );
   }
