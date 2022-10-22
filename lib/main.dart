@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:wheely_cool_app/models/items.dart';
 import 'package:wheely_cool_app/screens/setup.dart';
 import 'package:wheely_cool_app/screens/wheel.dart';
 import 'common/theme.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => ItemsModel(),
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

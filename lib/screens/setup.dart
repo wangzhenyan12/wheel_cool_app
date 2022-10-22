@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:wheely_cool_app/models/items.dart';
 
 class SetupScreen extends StatefulWidget {
   @override
@@ -62,8 +64,10 @@ class _SetupWidgetState extends State<SetupScreen> {
         onPressed: () {
           if (_formKey.currentState.validate()) {
             Navigator.pushNamed(context, '/wheel');
+            Provider.of<ItemsModel>(context, listen: false).removeAll();
             for (var controller in _textEditingControllersList) {
-              debugPrint(controller.text);
+              Provider.of<ItemsModel>(context, listen: false)
+                  .add(controller.text);
             }
           }
         },

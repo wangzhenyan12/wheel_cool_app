@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:wheely_cool_app/models/items.dart';
 
 class WheelScreen extends StatefulWidget {
   @override
@@ -15,6 +17,11 @@ class _WheelScreenState extends State<WheelScreen> {
             Navigator.pop(context);
           },
         ),
+      ),
+      body: Consumer<ItemsModel>(
+        builder: (context, itemsModel, child) {
+          return Text('items number: ${itemsModel.items.length}');
+        },
       ),
     );
   }
