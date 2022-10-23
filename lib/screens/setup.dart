@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:wheely_cool_app/customWidgets/customTextFormField.dart';
 import 'package:wheely_cool_app/models/items.dart';
 import 'package:wheely_cool_app/utils/sharedPreferencesUtils.dart';
 
@@ -24,19 +25,9 @@ class _SetupWidgetState extends State<SetupScreen> {
       _textEditingControllersList.add(controller);
       _textFormFieldsList.add(
         Container(
-            padding: const EdgeInsets.all(10.0),
-            child: TextFormField(
-              controller: controller,
-              decoration: const InputDecoration(
-                hintText: "Enter option",
-              ),
-              validator: (String value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter some text';
-                }
-                return null;
-              },
-            )),
+          padding: const EdgeInsets.all(10.0),
+          child: CustomTextFormField(controller),
+        ),
       );
     }
   }
