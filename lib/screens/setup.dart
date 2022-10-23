@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wheely_cool_app/models/items.dart';
+import 'package:wheely_cool_app/utils/sharedPreferencesUtils.dart';
 
 class SetupScreen extends StatefulWidget {
   @override
@@ -12,16 +12,15 @@ class _SetupWidgetState extends State<SetupScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   var _textEditingControllersList = List<TextEditingController>();
   var _textFormFieldsList = List<Widget>();
-  var _stringIdList = List<String>();
   static const int _itemsNumber = 5;
 
   @override
   void initState() {
     super.initState();
     for (var i = 1; i <= _itemsNumber; i++) {
-      _stringIdList.add(i.toString());
       TextEditingController controller = TextEditingController();
-      _getStringValuesSF(i.toString()).then((value) => controller.text = value);
+      SharedPreferencesUtils.getStringValuesSF(i.toString())
+          .then((value) => controller.text = value);
       _textEditingControllersList.add(controller);
       _textFormFieldsList.add(
         Container(
@@ -40,17 +39,6 @@ class _SetupWidgetState extends State<SetupScreen> {
             )),
       );
     }
-  }
-
-  Future<String> _getStringValuesSF(String key) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String stringValue = prefs.getString(key);
-    return stringValue;
-  }
-
-  _setStringToSF(String key, String value) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString(key, value);
   }
 
   @override
@@ -84,7 +72,7 @@ class _SetupWidgetState extends State<SetupScreen> {
             for (int i = 1; i <= _itemsNumber; i++) {
               String strOption = _textEditingControllersList[i - 1].text;
               Provider.of<ItemsModel>(context, listen: false).add(strOption);
-              _setStringToSF(i.toString(), strOption);
+              SharedPreferencesUtils.setStringToSF(i.toString(), strOption);
             }
           }
         },
