@@ -2,15 +2,11 @@
 
 The Wheely Cool App.
 
-## Getting Started
+- Provider for state management.
+- SharedPreferences for saving data persistently.
+- reference: https://github.com/385841539/flutter_BaseWidget/tree/master_1.1/lib/widget/piechart
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Todo list:
+- Internationalizing Flutter apps: https://docs.flutter.dev/development/accessibility-and-localization/internationalization
+- Support flavors: https://docs.flutter.dev/deployment/flavors
+- Unit Test, etc: https://docs.flutter.dev/testing
